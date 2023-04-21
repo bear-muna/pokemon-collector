@@ -12,13 +12,13 @@ const pokemonApp = async () => {
                     type: 'list',
                     message: 'Choose your option!',
                     name: 'option',
-                    choices: ['Add trainer', 'Add Pokemon', 'Get random Pokemon', 'Show Trainers', 'Quit'],
+                    choices: ['Add Trainer', 'Add Pokemon', 'Get Random Pokemon', 'Show Trainers', 'Quit'],
                 }
             ]);
             switch(data.option) {
 
-                case 'Add trainer':
-                    let addTrainerData = await inquirer
+                case 'Add Trainer':
+                    const addTrainerData = await inquirer
                         .prompt([
                            {
                                 type: 'input',
@@ -32,7 +32,7 @@ const pokemonApp = async () => {
                     break;
 
                 case 'Add Pokemon':
-                    let addPokemonData = await inquirer
+                    const addPokemonData = await inquirer
                         .prompt([
                             {
                                 type: 'list',
@@ -56,16 +56,14 @@ const pokemonApp = async () => {
                                 name: 'pokemonATK',
                             },
                         ]);
-                    // const pokemon = new Pokemon(addPokemonData.pokemonName, addPokemonData.pokemonHP, addPokemonData.pokemonATK);
-                    console.log(trainerArray);
-                    console.log(addPokemonData);
+
                     for (let i = 0; i < trainerArray.length; i++) {
                         if (trainerArray[i].name.match(addPokemonData.pokemonTrainer)) {
                             console.log(i);
                             trainerArray[i].addPokemon(addPokemonData.pokemonName, addPokemonData.pokemonHP, addPokemonData.pokemonATK);
                             console.log(trainerArray);
+                            break;
                         }
-                        break;
                     }
 
                     pokemonApp();
@@ -76,9 +74,31 @@ const pokemonApp = async () => {
                     pokemonApp();
                     break;
 
+                case 'Get Random Pokemon':
+                    const getRandomPokemonData = await inquirer
+                        .prompt([
+                            {
+                                type: 'list',
+                                message: 'Choose your trainer:',
+                                name: 'pokemonTrainer',
+                                choices: trainerArray,
+                            }
+                        ]);
+                    
+                    for (let i = 0; i < trainerArray.length; i++) {
+                        if (trainerArray[i].name.match(getRandomPokemonData.pokemonTrainer)) {
+                            console.log(trainerArray[i].getRandomPokemon());
+                            break;
+                        }
+                    }
+                    
+                    pokemonApp();
+                    break;
+
                 case 'Quit':
                     break;
             }
+            
     } catch (err) {
         console.log(err);
     }
