@@ -1,0 +1,27 @@
+{
+  "name": "pokemon-collector",
+  "version": "1.0.0",
+  "description": "Application to collect Pokemon and battle trainers",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bear-muna/pokemon-collector.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bear-muna/pokemon-collector/issues"
+  },
+  "homepage": "https://github.com/bear-muna/pokemon-collector#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
